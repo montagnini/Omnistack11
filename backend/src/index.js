@@ -1,13 +1,20 @@
+//Obtém o módulo express.
 const express = require('express');
+//Obtém o módulo cors. (segurança)
 const cors = require('cors');
+//Obtém o módulo de rotas.
 const routes = require('./routes');
 
+//Inicializa o express.
 const app = express();
 
+//Inicializa o cors.
 app.use(cors());
 app.use(express.json());
+//Utiliza as rotas.
 app.use(routes);
 
+//Vai para porta localhost:3333
 app.listen(3333);
 
 

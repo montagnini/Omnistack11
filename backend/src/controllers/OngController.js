@@ -1,7 +1,8 @@
 //Obtém o módulo de conexões com o BD.
 const connection = require('../database/connection');
-//Obtém o módulo crypto (para criação de id único).
-const crypto = require('crypto');
+//Obtém função geradora de id único.
+const generateId = require('../utils/generateUniqueId');
+
 
 //Exporta as rotas.
 module.exports = {
@@ -17,7 +18,7 @@ module.exports = {
         //Obtém todos as informações informadas no campo de criação.
         const {name, email, whatsapp, city, uf} = request.body;
         //Cria um identificador único e randomico.
-        const id = crypto.randomBytes(4).toString('HEX');
+        const id = generateId();
         //Insere no banco o novo registro da ong.
         await connection('ongs').insert({
             id, 

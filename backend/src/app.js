@@ -2,6 +2,8 @@
 const express = require('express');
 //Obtém o módulo cors. (segurança)
 const cors = require('cors');
+//Obtém o módulo de erros ao validar uma rota.
+const {errors} = require('celebrate');
 //Obtém o módulo de rotas.
 const routes = require('./routes');
 
@@ -13,10 +15,11 @@ app.use(cors());
 app.use(express.json());
 //Utiliza as rotas.
 app.use(routes);
+//Obtém o erro de validação (se houver).
+app.use(errors());
 
-//Vai para porta localhost:3333
-app.listen(3333);
-
+//Exporta o app.
+module.exports = app;
 
 /**
  * Métodos HTTP:

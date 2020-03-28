@@ -12,7 +12,7 @@ module.exports = {
             .count();
         //Obtém lista de incidentes pelo identificador da ong e páginado.
         const incidents = await connection('incidents')
-            .join('ongs', 'ong_id', '=', 'incidents.ong_id')
+            .join('ongs', 'ongs.id', '=', 'incidents.ong_id')
             .limit(5)
             .offset((page - 1) * 5)
             .select([
